@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="grumblr">
+<head>
+  <meta charset="UTF-8">
+  <title>grumblr</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/grumbl/grumbl.controller.js" charset="UTF-8"></script>
+</head>
+<body>
+  <div><h2>g r u m b l r</h2></div>
+  <div ng-controller='grumblController as grumblViewModel'>
+    <div ng-repeat='grumbl in grumblViewModel.grumbls' ng-show="!editGrumbl">
+      <div>
+        <p>{{$index}}</p>
+        <p>{{grumbl.title}}</p>
+        <p>{{grumbl.authorName}}</p>
+        <p>{{grumbl.content}}</p>
+        <p><img ng-src="{{grumbl.photoUrl}}"></p>
+      </div>
+
+      <button class ="edit" ng-click="grumblViewModel.edit($index); editGrumbl = !editGrumbl">Edit Grumbl</button>
+        <form ng-show="editGrumbl">
+            <p>
+              <label>title</label>
+              <input type="text" name="title" ng-model="grumblViewModel.title">
+            </p>
+            <p>
+              <label>author name</label>
+              <input type="text" name="authorName" ng-model="grumblViewModel.authorName">
+            </p>
+            <p>
+              <label>content</label>
+              <input type="text" name="content" ng-model="grumblViewModel.content">
+            </p>
+            <p>
+              <label>photo URL</label>
+              <input type="text" name="photoUrl" ng-model="grumblViewModel.photoUrl">
+            </p>
+          <button class="new" ng-click="grumblViewModel.update($index); editGrumbl = !editGrumbl">Save</button>
+          <button class="delete" ng-click="grumblViewModel.delete($index); editGrumbl = !editGrumbl">Delete</button>
+          <button ng-click='editGrumbl = !editGrumbl' class='cancel'>Cancel</button>
+        </form>
+
+    </div>
+  </div>
+
+  <div ng-controller='grumblController as grumblViewModel'>
+    <button ng-click="grumblViewModel.toggleForm()">new gromble</button>
+      <form ng-show="grumblViewModel.formIsVisible" ng-submit="grumblViewModel.create()">
+        <p>
+          <label>gramble title</label>
+          <input type="text" name="title" ng-model="grumblViewModel.title">
+        </p>
+        <p>
+          <label>author name</label>
+          <input type="text" name="authorName" ng-model="grumblViewModel.authorName">
+        </p>
+        <p>
+          <label>gremble content</label>
+          <input type="text" name="content" ng-model="grumblViewModel.content">
+        </p>
+        <p>
+          <label>photo URL</label>
+          <input type="text" name="photoUrl" ng-model="grumblViewModel.photoUrl">
+        </p>
+        <input type="submit" />
+      </form>
+    </div>
+  </body>
+</html>
