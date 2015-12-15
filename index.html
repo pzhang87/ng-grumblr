@@ -12,8 +12,8 @@
 <body>
   <div><h2>g r u m b l r</h2></div>
   <div ng-controller='grumblController as grumblViewModel'>
-    <div ng-repeat='grumbl in grumblViewModel.grumbls' ng-show="!editGrumbl">
-      <div>
+    <div ng-repeat='grumbl in grumblViewModel.grumbls'>
+      <div ng-show="!editGrumbl">
         <p>{{$index}}</p>
         <p>{{grumbl.title}}</p>
         <p>{{grumbl.authorName}}</p>
