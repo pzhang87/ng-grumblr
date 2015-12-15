@@ -1,3 +1,14 @@
+"use strict";
+
 (function(){
-  angular.module('grumblr', [])
+  angular.module('grumblr', ['ui.router'])
+  .config([
+    "$stateProvider",
+    RouterFunction
+  ]);
+
+  function RouterFunction($stateProvider){
+
+  }
+
 })();
